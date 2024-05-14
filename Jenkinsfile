@@ -1,8 +1,8 @@
 pipeline {
 
   environment {
-    registry = "docker.io/cubensquare/flask"
-    registry_mysql = "docker.io/cubensquare/mysql"
+    registry = "docker.io/nikila407/flask"
+    registry_mysql = "docker.io/nikila407/mysql"
     dockerImage = ""
   }
 
@@ -11,7 +11,7 @@ pipeline {
   
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/mgsgoms/Docker-Project.git'
+        git 'https://github.com/Niki-sri/Docker-Project'
       }
     }
 
@@ -42,8 +42,8 @@ pipeline {
    }
    stage('Build mysql image') {
      steps{
-       sh 'docker build -t "docker.io/cubensquare/mysql:$BUILD_NUMBER"  "$WORKSPACE"/mysql'
-        sh 'docker push "docker.io/cubensquare/mysql:$BUILD_NUMBER"'
+       sh 'docker build -t "docker.io/nikila407/mysql:$BUILD_NUMBER"  "$WORKSPACE"/mysql'
+        sh 'docker push "docker.io/nikila407/mysql:$BUILD_NUMBER"'
         }
       }
     stage('Deploy App') {
