@@ -16,7 +16,7 @@ spec:
       app: frontend
    spec:
     containers:
-    - image: docker.io/nikila407/python:${BUILD_NUMBER}
+    - image: docker.io/nikila407/flask:${BUILD_NUMBER}
       name: frontend
 
 ---
