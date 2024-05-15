@@ -19,7 +19,7 @@ pipeline {
       steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
-          dockerImage = docker.build registry_mysql + ":$BUILD_NUMBER" 
+           
         }
       }
     }
