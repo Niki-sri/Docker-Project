@@ -45,7 +45,7 @@ pipeline {
    stage('Build mysql image') {
      steps{
        script {
-               dockerImage = docker.build registry_mysql + ":$BUILD_NUMBER"  "$WORKSPACE"/mysql
+               dockerImage = docker.build registry_mysql + ":$BUILD_NUMBER"  '"$WORKSPACE"/mysql'
          docker.withRegistry( "", registryCredential) {
             dockerImage.push()
          }       
