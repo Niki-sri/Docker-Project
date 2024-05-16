@@ -45,8 +45,8 @@ pipeline {
    stage('Build mysql image') {
      steps{
        docker.withRegistry( "", registryCredential) {
-       sh 'docker build -t "docker.io/cubensquare/mysql:$BUILD_NUMBER"  "$WORKSPACE"/mysql'
-        sh 'docker push "docker.io/cubensquare/mysql:$BUILD_NUMBER"'
+       sh 'docker build -t "docker.io/nikila407/mysql:$BUILD_NUMBER"  "$WORKSPACE"/mysql'
+        sh 'docker push "docker.io/nikila407/mysql:$BUILD_NUMBER"'
         }
       }
    }
