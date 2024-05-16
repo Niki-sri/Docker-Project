@@ -44,10 +44,14 @@ pipeline {
    }
    stage('Build mysql image') {
      steps{
-       sh 'docker build -t "docker.io/nikila407/mysql:$BUILD_NUMBER"  "$WORKSPACE"/mysql'
-        sh 'docker push "docker.io/nikila407/mysql:$BUILD_NUMBER"'
+       script {
+               dockerImage = docker.build registry_mysql + ":$BUILD_NUMBER"  "$WORKSPACE"/mysql'
+         docker.withRegistry( "", registryCredential) {
+            dockerImage.push()
+         }       
         }
       }
+   }
     stage('Deploy App') {
       steps {
         script {
