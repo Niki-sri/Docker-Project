@@ -41,14 +41,12 @@ pipeline {
           sh "pwd"
           }
       }
-   }
+ }
    stage('Build mysql image') {
      steps{
-       script {
-               dockerImage = docker.build registry_mysql + ":$BUILD_NUMBER"  '"$WORKSPACE"/mysql'
-         docker.withRegistry( "", registryCredential) {
-            dockerImage.push()
-         }       
+       docker.withRegistry( "", registryCredential) {
+       sh 'docker build -t "docker.io/cubensquare/mysql:$BUILD_NUMBER"  "$WORKSPACE"/mysql'
+        sh 'docker push "docker.io/cubensquare/mysql:$BUILD_NUMBER"'
         }
       }
    }
