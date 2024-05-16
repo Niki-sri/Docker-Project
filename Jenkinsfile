@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    registry = "docker.io/nikila407/python 3.7"
+    registry = "docker.io/nikila407/flask"
     registry_mysql = "docker.io/nikila407/mysql"
     dockerImage = ""
   }
@@ -11,14 +11,14 @@ pipeline {
   
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/Niki-sri/Docker-Project'
+        git 'https://github.com/Niki-sri/Docker-Project.git'
       }
     }
 
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build -t registry . + ":$BUILD_NUMBER"
+          dockerImage = docker.build registry . + ":$BUILD_NUMBER"
            
         }
       }
