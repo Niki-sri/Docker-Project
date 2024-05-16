@@ -4,7 +4,7 @@ pipeline {
     registry = "docker.io/nikila407/flask"
     registry_mysql = "docker.io/nikila407/mysql"
     dockerImage = ""
-    registryCredentials = 
+    registryCredentials = "dockerhub" 
   }
 
   agent any
