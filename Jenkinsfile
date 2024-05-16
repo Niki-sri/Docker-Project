@@ -4,6 +4,7 @@ pipeline {
     registry = "docker.io/nikila407/flask"
     registry_mysql = "docker.io/nikila407/mysql"
     dockerImage = ""
+    registryCredentials = 
   }
 
   agent any
@@ -27,7 +28,7 @@ pipeline {
     stage('Push Image') {
       steps{
         script {
-          docker.withRegistry( "" ) {
+          docker.withRegistry( "" registryCredentials) {
             dockerImage.push()
           }
         }
